@@ -1,0 +1,23 @@
+{
+    "name": "wartron/yii2-account-billing",
+    "description": "Yii2 Account Billing Module",
+    "keywords": ["yii2", "yii2-account", "billing"],
+    "type": "yii2-extension",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Will Wharton",
+            "email": "w@wartron.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "yiisoft/yii2": "~2.0",
+        "kartik-v/yii2-helpers": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "wartron\\yii2accountbilling\\": ""
+        }
+    }
+}
