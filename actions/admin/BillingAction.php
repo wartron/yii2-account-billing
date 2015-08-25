@@ -14,7 +14,7 @@ class BillingAction extends \yii\base\Action
     {
         $account = $this->findModel($id);
 
-        return $this->controller->render('/account-billing', [
+        return $this->controller->render('billing/account-billing', [
             'account'   =>  $account,
         ]);
     }
