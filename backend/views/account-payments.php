@@ -11,7 +11,7 @@ $this->beginContent('@wartron/yii2account/views/admin/update.php', [
     'account'   =>  $account,
 ]);
 
-
+echo "<h4>Backend Payments</h4>";
 
 
 $this->endContent();

@@ -2,8 +2,9 @@
 
 use yii\helpers\Html;
 
-$this->title = Yii::t('account', 'Billing');
+$this->title = Yii::t('account', 'Payments');
 $this->params['breadcrumbs'][] = $this->title;
+
 
 echo $this->render('@wartron/yii2account/views/_alert', ['module' => Yii::$app->getModule('account')]);
 
