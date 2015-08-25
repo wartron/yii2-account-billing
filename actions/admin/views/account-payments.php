@@ -7,7 +7,7 @@ use yii\helpers\Url;
 $module = Yii::$app->getModule('account');
 
 $this->beginContent('@wartron/yii2account/views/admin/update.php', [
-    'title'     =>  'Billing',
+    'title'     =>  'Payments',
     'account'   =>  $account,
 ]);
 
