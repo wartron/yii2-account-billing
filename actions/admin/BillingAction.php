@@ -4,19 +4,29 @@ namespace wartron\yii2account\billing\actions\admin;
 
 
 use wartron\yii2uuid\helpers\Uuid;
+use wartron\yii2account\models\Account;
 use Yii;
-use yii\base\InvalidConfigException;
-use yii\db\ActiveRecordInterface;
-use yii\web\NotFoundHttpException;
 
-class Action extends \yii\base\Action
+class BillingAction extends \yii\base\Action
 {
-
 
     public function run($id)
     {
-        return "account_id  ".Uuid::str2uuid($id);
+        $account = $this->findModel($id);
+
+        return $this->controller->render('/account-billing', [
+            'account'   =>  $account,
+        ]);
     }
 
+    protected function findModel($id)
+    {
+        $id = Uuid::str2uuid($id);
+        $account = Account::findOne($id);
+        if ($account === null) {
+            throw new NotFoundHttpException('The requested page does not exist');
+        }
+        return $account;
+    }
 
 }
