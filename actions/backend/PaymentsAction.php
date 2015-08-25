@@ -1,20 +1,20 @@
 <?php
 
-namespace wartron\yii2account\billing\actions\admin;
+namespace wartron\yii2account\billing\backend\actions;
 
 
 use wartron\yii2uuid\helpers\Uuid;
 use wartron\yii2account\models\Account;
 use Yii;
 
-class BillingAction extends \yii\base\Action
+class PaymentsAction extends \yii\base\Action
 {
 
     public function run($id)
     {
         $account = $this->findModel($id);
 
-        return $this->controller->render('@wartron/yii2account/billing/actions/admin/views/account-billing', [
+        return $this->controller->render('@wartron/yii2account/billing/backend/views/account-payments', [
             'account'   =>  $account,
         ]);
     }
