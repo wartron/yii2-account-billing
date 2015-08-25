@@ -14,7 +14,7 @@ class BillingAction extends \yii\base\Action
     {
         $account = $this->findModel($id);
 
-        return $this->controller->render('billing/account-billing', [
+        return $this->controller->render('@wartron/yii2account-billing/actions/admin/views/account-billing', [
             'account'   =>  $account,
         ]);
     }
