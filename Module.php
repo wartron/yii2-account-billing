@@ -1,6 +1,6 @@
 <?php
 
-namespace wartron\yii2accountbilling;
+namespace wartron\yii2account\billing;
 
 use yii\base\Module as BaseModule;
 use yii\base\InvalidParamException;

@@ -1,11 +1,11 @@
 <?php
 
-namespace wartron\yii2accountbilling\models;
+namespace wartron\yii2account\billing\models;
 
 use Exception;
 use Yii;
 
-class BillableItem extends \yii\db\ActiveRecord
+class BillableItem extends \wartron\yii2uuid\db\ActiveRecord
 {
     const STATUS_INACTIVE           = 0;
     const STATUS_ACTIVE             = 1;
@@ -44,7 +44,7 @@ class BillableItem extends \yii\db\ActiveRecord
     {
         return [
             [['name', 'amount', 'type', 'status'], 'required'],
-            [['amount', 'type', 'status', 'created_at', 'created_by', 'updated_at', 'updated_by'], 'integer'],
+            [['amount', 'type', 'status', 'created_at', 'updated_at'], 'integer'],
             [['description'], 'string', 'max' => 255],
             [['data'], 'string', 'max' => 10*1024],
         ];

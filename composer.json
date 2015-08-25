@@ -13,11 +13,13 @@
     "minimum-stability": "dev",
     "require": {
         "yiisoft/yii2": "~2.0",
+        "wartron/yii2-uuid": "*",
+        "wartron/yii2-widgets-urlactive": "*",
         "kartik-v/yii2-helpers": "*"
     },
     "autoload": {
         "psr-4": {
-            "wartron\\yii2accountbilling\\": ""
+            "wartron\\yii2account\\billing\\": ""
         }
     }
 }
