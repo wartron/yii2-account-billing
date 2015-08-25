@@ -10,19 +10,18 @@ use Yii;
 class PaymentsAction extends \yii\base\Action
 {
 
-    public function run($id)
+    public function run()
     {
-        $account = $this->findModel($id);
+        $account = $this->findModel();
 
         return $this->controller->render('@wartron/yii2account/billing/frontend/views/account-payments', [
             'account'   =>  $account,
         ]);
     }
 
-    protected function findModel($id)
+    protected function findModel()
     {
-        $id = Uuid::str2uuid($id);
-        $account = Account::findOne($id);
+        $account = Account::findOne(Yii::$app->user->identity->getId());
         if ($account === null) {
             throw new NotFoundHttpException('The requested page does not exist');
         }
