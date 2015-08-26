@@ -14,7 +14,7 @@ class BillableItem extends \wartron\yii2uuid\db\ActiveRecord
     const TYPE_RECURRING            = 10;
 
 
-    /** @var \wartron\yii2accountbilling\Module */
+    /** @var \wartron\yii2account\billing\Module */
     protected $module;
 
     /** @inheritdoc */
