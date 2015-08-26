@@ -7,10 +7,8 @@ class m150816_223011_create_payment_table extends Migration
 {
     public function up()
     {
-        return;
-
         $this->createTable('{{%payment}}', [
-            'id'                =>  'BINARY(16) NOT NULL',
+            'id'                =>  'BINARY(16) NOT NULL PRIMARY KEY',
 
             'account_id'        =>  'BINARY(16) NOT NULL',
             'status'            =>  Schema::TYPE_INTEGER . ' NOT NULL',
@@ -37,7 +35,6 @@ class m150816_223011_create_payment_table extends Migration
 
     public function down()
     {
-        return;
         $this->dropTable('{{%payment_item}}');
         $this->dropTable('{{%payment}}');
     }

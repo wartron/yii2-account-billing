@@ -7,9 +7,8 @@ class m150816_212645_create_billable_item_table extends Migration
 {
     public function up()
     {
-        return;
         $this->createTable('{{%billable_item}}', [
-            'id'                =>  'BINARY(16) NOT NULL'
+            'id'                =>  'BINARY(16) NOT NULL PRIMARY KEY',
 
             'status'            =>  Schema::TYPE_INTEGER . ' NOT NULL DEFAULT 0',
             'type'              =>  Schema::TYPE_INTEGER . ' NOT NULL DEFAULT 0',
@@ -29,7 +28,6 @@ class m150816_212645_create_billable_item_table extends Migration
 
     public function down()
     {
-        return;
         $this->dropTable('{{%billable_item}}');
     }
 
