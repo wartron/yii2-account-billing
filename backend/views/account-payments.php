@@ -4,6 +4,7 @@
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\grid\GridView;
+use wartron\yii2uuid\helpers\Uuid;
 
 $module = Yii::$app->getModule('account');
 
@@ -16,7 +17,13 @@ echo GridView::widget([
     'dataProvider' => $paymentDp,
     'filterModel' => $paymentSearch,
     'columns' => [
-        'id:hex',
+        [
+            'attribute' => 'id',
+            'value' => function ($m) {
+                return Html::a(Uuid::uuid2str($m->id), ['/billing/admin-payment/view', 'id' =>  Uuid::uuid2str($m->id)]);
+            },
+            'format' => 'raw',
+        ],
         'status',
         'amount',
         'description',
