@@ -24,6 +24,28 @@ class m150816_212645_create_billable_item_table extends Migration
             'updated_by'        =>  'BINARY(16)',
         ]);
 
+        $columns = ['id', 'type', 'status', 'amount', 'name', 'description'];
+        $this->batchInsert('{{%billable_item}}', $columns, [
+            [
+                hex2bin('53f24b97aade11e2aced000c29ae5e1b'),
+                1,
+                1,
+                500,
+                'Gizmo',
+                'This should cost $5'
+            ],
+            [
+                hex2bin('fa411e44a7e711e2aced000c29ae5e1b'),
+                1,
+                1,
+                1099,
+                'Widget',
+                'This should cost $10.99'
+            ],
+        ]);
+
+
+
     }
 
     public function down()

@@ -16,8 +16,8 @@ class BillableItem extends BaseBillableItem
     public function rules()
     {
         return [
-            [['id', 'status', 'type' , 'created_at', 'created_by', 'updated_at', 'updated_by'], 'integer'],
-            [['name', 'status', 'type'], 'safe'],
+            [['id', 'status', 'type', 'amount', 'created_at', 'updated_at', ], 'integer'],
+            [['name', 'status', 'type', 'description','data', 'updated_by', 'created_by'], 'safe'],
         ];
     }
 
@@ -49,14 +49,14 @@ class BillableItem extends BaseBillableItem
         $this->load($params);
 
         if (!$this->validate()) {
-            // uncomment the following line if you do not want to any records when validation fails
-            // $query->where('0=1');
             return $dataProvider;
         }
 
         $query->andFilterWhere([
             'id' => $this->id,
             'status' => $this->status,
+            'type' => $this->type,
+            'amount' => $this->amount,
             'created_at' => $this->created_at,
             'created_by' => $this->created_by,
             'updated_at' => $this->updated_at,
@@ -64,6 +64,7 @@ class BillableItem extends BaseBillableItem
         ]);
 
         $query->andFilterWhere(['like', 'name', $this->name]);
+        $query->andFilterWhere(['like', 'description', $this->description]);
 
         return $dataProvider;
     }
