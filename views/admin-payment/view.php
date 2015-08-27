@@ -23,10 +23,10 @@ use wartron\yii2uuid\helpers\Uuid;
  * @var string  $content
  */
 
-$this->title = Yii::t('account-billing', 'View Billable Item');
+$this->title = Yii::t('account-billing', 'View Payment');
 $this->params['breadcrumbs'][] = ['label' => Yii::t('account-billing', 'Billing'), 'url' => ['/billing/admin']];
-$this->params['breadcrumbs'][] = ['label' => Yii::t('account-billing', 'Billables'), 'url' => ['index']];
-$this->params['breadcrumbs'][] = ['label' => $model->id , 'url' => ['view', 'id' => Uuid::uuid2str($model->id)] ];
+$this->params['breadcrumbs'][] = ['label' => Yii::t('account-billing', 'Payments'), 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => Uuid::uuid2str($model->id) , 'url' => ['view', 'id' => Uuid::uuid2str($model->id)] ];
 $this->params['breadcrumbs'][] = $this->title;
 
 

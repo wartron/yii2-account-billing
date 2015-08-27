@@ -14,10 +14,9 @@ $form = ActiveForm::begin([
 
 echo $form->errorSummary($model);
 echo '<p>';
-echo $form->field($model, 'name')->textInput(['maxlength' => true]);
 echo $form->field($model, 'amount');
-echo $form->field($model, 'type');
 echo $form->field($model, 'status');
+echo $form->field($model, 'description');
 echo '</p>';
 
 echo '<hr/>';
