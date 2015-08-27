@@ -24,8 +24,9 @@ use wartron\yii2uuid\helpers\Uuid;
  */
 
 $this->title = Yii::t('account-billing', 'View Billable Item');
+$this->params['breadcrumbs'][] = ['label' => Yii::t('account-billing', 'Billing'), 'url' => ['/billing/admin']];
 $this->params['breadcrumbs'][] = ['label' => Yii::t('account-billing', 'Billables'), 'url' => ['index']];
-$this->params['breadcrumbs'][] = ['label' => $model->name , 'url' => ['view', 'id' => Uuid::uuid2str($model->id)] ];
+$this->params['breadcrumbs'][] = ['label' => $model->id , 'url' => ['view', 'id' => Uuid::uuid2str($model->id)] ];
 $this->params['breadcrumbs'][] = $this->title;
 
 
@@ -49,16 +50,11 @@ $this->params['breadcrumbs'][] = $this->title;
         'model' => $model,
         'attributes' => [
             'id:hex',
-            'name',
             'status',
-            'type',
             'amount',
             'description',
-            'data',
             'created_at',
             'created_by:hex',
-            'updated_at',
-            'updated_by:hex',
         ],
     ]);
 

@@ -24,6 +24,7 @@ use wartron\yii2uuid\helpers\Uuid;
  */
 
 $this->title = Yii::t('account-billing', 'View Billable Item');
+$this->params['breadcrumbs'][] = ['label' => Yii::t('account-billing', 'Billing'), 'url' => ['/billing/admin']];
 $this->params['breadcrumbs'][] = ['label' => Yii::t('account-billing', 'Billables'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->name , 'url' => ['view', 'id' => Uuid::uuid2str($model->id)] ];
 $this->params['breadcrumbs'][] = $this->title;

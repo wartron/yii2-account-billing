@@ -1,14 +1,5 @@
 <?php
 
-/*
- * This file is part of the Dektrium project.
- *
- * (c) Dektrium project <http://github.com/dektrium>
- *
- * For the full copyright and license information, please view the LICENSE.md
- * file that was distributed with this source code.
- */
-
 use wartron\yii2account\billing\models\search\BillableItem;
 use yii\data\ActiveDataProvider;
 use yii\grid\ActionColumn;
@@ -26,6 +17,7 @@ use wartron\yii2uuid\helpers\Uuid;
  */
 
 $this->title = Yii::t('account-billing', 'Manage Payments');
+$this->params['breadcrumbs'][] = ['label' => Yii::t('account-billing', 'Billing'), 'url' => ['/billing/admin']];
 $this->params['breadcrumbs'][] = $this->title;
 
 
@@ -38,9 +30,9 @@ echo GridView::widget([
     'layout'        => "{items}\n{pager}",
     'columns' => [
         [
-            'attribute' => 'name',
+            'attribute' => 'id',
             'value' => function ($m) {
-                return Html::a($m->name, ['view', 'id' =>  Uuid::uuid2str($m->id)]);
+                return Html::a(Uuid::uuid2str($m->id), ['view', 'id' =>  Uuid::uuid2str($m->id)]);
             },
             'format' => 'raw',
         ],
