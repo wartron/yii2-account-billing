@@ -13,12 +13,13 @@ $this->beginContent('@wartron/yii2account/views/admin/update.php', [
 ]);
 
 echo GridView::widget([
-    'dataProvider' => $paymentDP,
+    'dataProvider' => $paymentDp,
     'filterModel' => $paymentSearch,
     'columns' => [
-        'id',
+        'id:hex',
         'status',
         'amount',
+        'description',
         [
             'attribute' =>  'created_at',
             'format'    =>  'raw',
