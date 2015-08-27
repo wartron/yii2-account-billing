@@ -22,8 +22,6 @@ $this->title = Yii::t('account-billing', 'Create a billable item');
 $this->params['breadcrumbs'][] = ['label' => Yii::t('account-billing', 'Billables'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 
-$module = Yii::$app->getModule('billing');
-
 
 ?>
 
@@ -42,6 +40,12 @@ $module = Yii::$app->getModule('billing');
     <div class="col-md-9">
         <div class="panel panel-default">
             <div class="panel-body">
+
+                <?php
+                    echo $this->render('_form', [
+                        'model' => $model,
+                    ]);
+                ?>
 
             </div>
         </div>

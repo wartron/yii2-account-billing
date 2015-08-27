@@ -28,7 +28,6 @@ use wartron\yii2uuid\helpers\Uuid;
 $this->title = Yii::t('account-billing', 'Manage Billable Items');
 $this->params['breadcrumbs'][] = $this->title;
 
-$module = Yii::$app->getModule('billing');
 
 
 Pjax::begin();
@@ -41,7 +40,7 @@ echo GridView::widget([
         [
             'attribute' => 'name',
             'value' => function ($m) {
-                return Html::a($m->name, ['view', 'id' =>  $m->id ]);
+                return Html::a($m->name, ['view', 'id' =>  Uuid::uuid2str($model->id)]);
             },
             'format' => 'raw',
         ],

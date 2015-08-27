@@ -25,9 +25,6 @@ $this->params['breadcrumbs'][] = ['label' => Yii::t('account-billing', 'Billable
 $this->params['breadcrumbs'][] = ['label' => $model->name , 'url' => ['view', 'id' => Uuid::uuid2str($model->id)] ];
 $this->params['breadcrumbs'][] = $this->title;
 
-$module = Yii::$app->getModule('billing');
-
-
 
 
 
@@ -43,6 +40,26 @@ $module = Yii::$app->getModule('billing');
     <div class="col-md-9">
         <div class="panel panel-default">
             <div class="panel-body">
+    <?php
+
+    echo DetailView::widget([
+        'model' => $model,
+        'attributes' => [
+            'id:hex',
+            'name',
+            'status',
+            'type',
+            'amount',
+            'description',
+            'data',
+            'created_at',
+            'created_by',
+            'updated_at',
+            'updated_by',
+        ],
+    ]);
+
+    ?>
 
             </div>
         </div>
