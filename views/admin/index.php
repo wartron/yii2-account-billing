@@ -11,9 +11,10 @@
 
 use wartron\yii2account\billing\models\search\BillableItem;
 use yii\data\ActiveDataProvider;
+use yii\grid\ActionColumn;
 use yii\grid\GridView;
-use yii\helpers\Html;
 use yii\jui\DatePicker;
+use yii\helpers\Html;
 use yii\web\View;
 use yii\widgets\Pjax;
 use wartron\yii2uuid\helpers\Uuid;
@@ -24,7 +25,7 @@ use wartron\yii2uuid\helpers\Uuid;
  * @var AccountSearch $searchModel
  */
 
-$this->title = Yii::t('billing', 'Manage Billable Items');
+$this->title = Yii::t('account-billing', 'Manage Billable Items');
 $this->params['breadcrumbs'][] = $this->title;
 
 $module = Yii::$app->getModule('billing');
@@ -37,6 +38,13 @@ echo GridView::widget([
     'filterModel'   => $searchModel,
     'layout'        => "{items}\n{pager}",
     'columns' => [
+        [
+            'attribute' => 'name',
+            'value' => function ($m) {
+                return Html::a($m->name, ['view', 'id' =>  $m->id ]);
+            },
+            'format' => 'raw',
+        ],
         [
             'attribute' => 'status',
             'filter' => [
@@ -52,7 +60,31 @@ echo GridView::widget([
             ],
         ],
         'amount',
-        'name',
+        [
+            'attribute' => 'created_at',
+            'value' => function ($model) {
+                if (extension_loaded('intl')) {
+                    return Yii::t('account', '{0, date, MMMM dd, YYYY HH:mm}', [$model->created_at]);
+                } else {
+                    return date('Y-m-d G:i:s', $model->created_at);
+                }
+            },
+            'filter' => DatePicker::widget([
+                'model'      => $searchModel,
+                'attribute'  => 'created_at',
+                'dateFormat' => 'php:Y-m-d',
+                'options' => [
+                    'class' => 'form-control',
+                ],
+            ]),
+        ],
+
+        [
+            'class'     => ActionColumn::className(),
+            'options'   => [
+                'style' => 'width: 5%'
+            ],
+        ]
     ],
 ]);
 

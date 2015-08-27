@@ -16,8 +16,8 @@ class BillableItem extends BaseBillableItem
     public function rules()
     {
         return [
-            [['id', 'status', 'created_at', 'created_by', 'updated_at', 'updated_by'], 'integer'],
-            [['name'], 'safe'],
+            [['id', 'status', 'type' , 'created_at', 'created_by', 'updated_at', 'updated_by'], 'integer'],
+            [['name', 'status', 'type'], 'safe'],
         ];
     }
 
