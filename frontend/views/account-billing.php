@@ -35,35 +35,34 @@ echo $this->render('@wartron/yii2account/views/_alert', ['module' => $module]);
                 Payment History
             </div>
             <div class="panel-body">
-<?php
+                <?php
 
-echo GridView::widget([
-    'dataProvider' => $paymentDp,
-    'filterModel' => $paymentSearch,
-    'columns' => [
-        [
-            'attribute' => 'id',
-            'value' => function ($m) {
-                return Html::a(Uuid::uuid2str($m->id), ['/billing/payment/view', 'id' =>  Uuid::uuid2str($m->id)]);
-            },
-            'format' => 'raw',
-        ],
-        'status',
-        'amount',
-        'description',
-        [
-            'attribute' =>  'created_at',
-            'format'    =>  'raw',
-            'value'     =>  function($m) {
-                $relativeTime = \Yii::$app->formatter->asRelativeTime($m['created_at']);
-                $formatedTime = \Yii::$app->formatter->asDatetime($m['created_at']);
-                return '<span title="'.$formatedTime.'">'.$relativeTime.'</span>';
-            }
-        ],
-    ],
-]);
+                echo GridView::widget([
+                    'dataProvider' => $paymentDp,
+                    'columns' => [
+                        [
+                            'attribute' => 'id',
+                            'value' => function ($m) {
+                                return Html::a(Uuid::uuid2str($m->id), ['/billing/payment/view', 'id' =>  Uuid::uuid2str($m->id)]);
+                            },
+                            'format' => 'raw',
+                        ],
+                        'status',
+                        'amount',
+                        'description',
+                        [
+                            'attribute' =>  'created_at',
+                            'format'    =>  'raw',
+                            'value'     =>  function($m) {
+                                $relativeTime = \Yii::$app->formatter->asRelativeTime($m['created_at']);
+                                $formatedTime = \Yii::$app->formatter->asDatetime($m['created_at']);
+                                return '<span title="'.$formatedTime.'">'.$relativeTime.'</span>';
+                            }
+                        ],
+                    ],
+                ]);
 
-?>
+                ?>
 
             </div>
         </div>
