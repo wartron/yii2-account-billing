@@ -4,6 +4,8 @@ namespace wartron\yii2account\billing\models\search;
 
 use Exception;
 use Yii;
+use yii\base\Model;
+use yii\data\ActiveDataProvider;
 use wartron\yii2account\billing\models\BillableItem as BaseBillableItem;
 
 class BillableItem extends BaseBillableItem
