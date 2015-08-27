@@ -4,7 +4,7 @@ namespace wartron\yii2account\billing\models;
 
 use Exception;
 use Yii;
-use wartron\yii2accountbilling\models\BillableItem;
+use wartron\yii2account\billing\models\BillableItem;
 
 class Payment extends \wartron\yii2uuid\db\ActiveRecord
 {

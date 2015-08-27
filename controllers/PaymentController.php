@@ -16,6 +16,7 @@ use yii\web\NotFoundHttpException;
 use yii\web\Response;
 use yii\widgets\ActiveForm;
 use wartron\yii2uuid\helpers\Uuid;
+use yii\data\ActiveDataProvider;
 
 
 class PaymentController extends Controller
@@ -55,8 +56,13 @@ class PaymentController extends Controller
         Url::remember('', 'actions-redirect');
         $payment = $this->findModel($id);
 
+        $itemDp = new ActiveDataProvider([
+            'query' => $payment->getItems()
+        ]);
+
         return $this->render('view', [
-            'model' => $payment,
+            'model'     =>  $payment,
+            'itemDp'    =>  $itemDp
         ]);
     }
 

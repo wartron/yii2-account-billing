@@ -16,6 +16,7 @@ use yii\web\NotFoundHttpException;
 use yii\web\Response;
 use yii\widgets\ActiveForm;
 use wartron\yii2uuid\helpers\Uuid;
+use yii\data\ActiveDataProvider;
 
 
 class AdminPaymentController extends Controller
@@ -66,33 +67,6 @@ class AdminPaymentController extends Controller
     }
 
     /**
-     * Creates a new Payment model.
-     * If creation is successful, the browser will be redirected to the 'index' page.
-     *
-     * @return mixed
-     */
-    public function actionCreate()
-    {
-        /** @var Payment $billable */
-        $billable = Yii::createObject([
-            'class'    => Payment::className(),
-            'scenario' => 'create',
-        ]);
-
-        $this->performAjaxValidation($billable);
-
-        if ($billable->load(Yii::$app->request->post()) && $billable->create()) {
-            Yii::$app->getSession()->setFlash('success', Yii::t('account-billing', 'Payment has been created'));
-
-            return $this->redirect(['update', 'id' => Uuid::uuid2str($billable->id)]);
-        }
-
-        return $this->render('create', [
-            'model' => $billable,
-        ]);
-    }
-
-    /**
      * Updates an existing Payment model.
      *
      * @param int $id
@@ -102,19 +76,19 @@ class AdminPaymentController extends Controller
     public function actionUpdate($id)
     {
         Url::remember('', 'actions-redirect');
-        $billable = $this->findModel($id);
-        // $billable->scenario = 'update';
+        $payment = $this->findModel($id);
+        // $payment->scenario = 'update';
 
-        $this->performAjaxValidation($billable);
+        $this->performAjaxValidation($payment);
 
-        if ($billable->load(Yii::$app->request->post()) && $billable->save()) {
+        if ($payment->load(Yii::$app->request->post()) && $payment->save()) {
             Yii::$app->getSession()->setFlash('success', Yii::t('account-billing', 'Payment details have been updated'));
 
             return $this->refresh();
         }
 
         return $this->render('update', [
-            'model' => $billable,
+            'model' => $payment,
         ]);
     }
 
@@ -129,10 +103,16 @@ class AdminPaymentController extends Controller
     public function actionView($id)
     {
         Url::remember('', 'actions-redirect');
-        $billable = $this->findModel($id);
+        $payment = $this->findModel($id);
+
+
+        $itemDp = new ActiveDataProvider([
+            'query' => $payment->getItems()
+        ]);
 
         return $this->render('view', [
-            'model' => $billable,
+            'model'     => $payment,
+            'itemDp'    =>  $itemDp
         ]);
     }
 
@@ -149,12 +129,12 @@ class AdminPaymentController extends Controller
     protected function findModel($id)
     {
         $id = Uuid::str2uuid($id);
-        $billable = Payment::findOne($id);
-        if ($billable === null) {
+        $payment = Payment::findOne($id);
+        if ($payment === null) {
             throw new NotFoundHttpException('The requested page does not exist');
         }
 
-        return $billable;
+        return $payment;
     }
 
     /**

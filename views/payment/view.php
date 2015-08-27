@@ -1,46 +1,38 @@
 <?php
 
-/*
- * This file is part of the Dektrium project.
- *
- * (c) Dektrium project <http://github.com/dektrium>
- *
- * For the full copyright and license information, please view the LICENSE.md
- * file that was distributed with this source code.
- */
 
 use yii\bootstrap\Nav;
 use yii\web\View;
 use yii\helpers\Html;
 use yii\helpers\Url;
-use yii\grid\GridView;
 use yii\widgets\DetailView;
-use wartron\yii2account\models\Account;
+use yii\grid\GridView;
 use wartron\yii2uuid\helpers\Uuid;
-/**
- * @var View    $this
- * @var Account     $model
- * @var string  $content
- */
 
 
+$this->title = Yii::t('account', 'Billing');
+$this->params['breadcrumbs'][] = $this->title;
 
+$module = Yii::$app->getModule('account');
 
-
+echo $this->render('@wartron/yii2account/views/_alert', ['module' => $module]);
 
 ?>
+
 <div class="row">
     <div class="col-md-3">
-        <div class="panel panel-default">
-            <div class="panel-body">
-
-            </div>
-        </div>
+        <?php
+            echo $this->render('@wartron/yii2account/views/settings/_menu', ['module' => $module]);
+        ?>
     </div>
     <div class="col-md-9">
+
         <div class="panel panel-default">
+            <div class="panel-heading">
+                Payment Details
+            </div>
             <div class="panel-body">
-    <?php
+                <?php
 
     echo DetailView::widget([
         'model' => $model,
@@ -53,7 +45,16 @@ use wartron\yii2uuid\helpers\Uuid;
         ],
     ]);
 
-    ?>
+
+    echo GridView::widget([
+        'dataProvider'  => $itemsDp,
+        'columns' => [
+            'name',
+        ],
+    ]);
+
+
+                ?>
 
             </div>
         </div>
