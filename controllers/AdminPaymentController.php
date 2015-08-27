@@ -106,13 +106,14 @@ class AdminPaymentController extends Controller
         $payment = $this->findModel($id);
 
 
-        $itemDp = new ActiveDataProvider([
+        $itemsDp = new ActiveDataProvider([
             'query' => $payment->getItems()
         ]);
 
+
         return $this->render('view', [
             'model'     => $payment,
-            'itemDp'    =>  $itemDp
+            'itemsDp'   =>  $itemsDp
         ]);
     }
 

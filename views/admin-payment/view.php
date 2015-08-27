@@ -15,7 +15,6 @@ use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\grid\GridView;
 use yii\widgets\DetailView;
-use yii\grid\GridView;
 use wartron\yii2account\models\Account;
 use wartron\yii2uuid\helpers\Uuid;
 /**
