@@ -1,30 +1,33 @@
 <?php
-    $form = ActiveForm::begin([
-        'layout' => 'horizontal',
-        'enableClientValidation' => false,
-    ]);
-?>
 
-<div class="">
-    <?php
+use yii\helpers\Html;
+use yii\bootstrap\ActiveForm;
 
-    echo $form->errorSummary($model);
-    echo '<p>';
-    echo $form->field($model, 'name')->textInput(['maxlength' => true]);
-    echo '</p>';
 
-    echo '<hr/>';
 
-    echo Html::submitButton(
-        '<span class="glyphicon glyphicon-check"></span> ' . ($model->isNewRecord ? Yii::t('app', 'Create') : Yii::t('app', 'Save')),
-        [
-            'id' => 'save-' . $model->formName(),
-            'class' => 'btn btn-success'
-        ]
-    );
 
-    ActiveForm::end();
+$form = ActiveForm::begin([
+    'layout' => 'horizontal',
+    'enableClientValidation' => false,
+]);
 
-    ?>
 
-</div>
+echo $form->errorSummary($model);
+echo '<p>';
+echo $form->field($model, 'name')->textInput(['maxlength' => true]);
+echo $form->field($model, 'amount');
+echo $form->field($model, 'type');
+echo $form->field($model, 'status');
+echo '</p>';
+
+echo '<hr/>';
+
+echo Html::submitButton(
+    '<span class="glyphicon glyphicon-check"></span> ' . ($model->isNewRecord ? Yii::t('app', 'Create') : Yii::t('app', 'Save')),
+    [
+        'id' => 'save-' . $model->formName(),
+        'class' => 'btn btn-success'
+    ]
+);
+
+ActiveForm::end();

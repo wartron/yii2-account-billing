@@ -40,7 +40,7 @@ echo GridView::widget([
         [
             'attribute' => 'name',
             'value' => function ($m) {
-                return Html::a($m->name, ['view', 'id' =>  Uuid::uuid2str($model->id)]);
+                return Html::a($m->name, ['view', 'id' =>  Uuid::uuid2str($m->id)]);
             },
             'format' => 'raw',
         ],

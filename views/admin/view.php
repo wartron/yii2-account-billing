@@ -9,11 +9,14 @@
  * file that was distributed with this source code.
  */
 
-use wartron\yii2account\models\Account;
 use yii\bootstrap\Nav;
 use yii\web\View;
+use yii\helpers\Html;
+use yii\helpers\Url;
+use yii\grid\GridView;
+use yii\widgets\DetailView;
+use wartron\yii2account\models\Account;
 use wartron\yii2uuid\helpers\Uuid;
-
 /**
  * @var View    $this
  * @var Account     $model
