@@ -16,8 +16,8 @@ class Payment extends BasePayment
     public function rules()
     {
         return [
-            [['id', 'status', 'amount', 'created_at', 'updated_at', ], 'integer'],
-            [['status', 'description','updated_by', 'created_by'], 'safe'],
+            [['id', 'status', 'amount', 'created_at',  ], 'integer'],
+            [['status', 'description', 'created_by'], 'safe'],
         ];
     }
 
@@ -55,12 +55,9 @@ class Payment extends BasePayment
         $query->andFilterWhere([
             'id' => $this->id,
             'status' => $this->status,
-            'type' => $this->type,
             'amount' => $this->amount,
             'created_at' => $this->created_at,
             'created_by' => $this->created_by,
-            'updated_at' => $this->updated_at,
-            'updated_by' => $this->updated_by,
         ]);
 
         $query->andFilterWhere(['like', 'description', $this->description]);

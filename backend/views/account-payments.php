@@ -3,6 +3,7 @@
 
 use yii\helpers\Html;
 use yii\helpers\Url;
+use yii\grid\GridView;
 
 $module = Yii::$app->getModule('account');
 
@@ -24,15 +25,6 @@ echo GridView::widget([
             'value'     =>  function($m) {
                 $relativeTime = \Yii::$app->formatter->asRelativeTime($m['created_at']);
                 $formatedTime = \Yii::$app->formatter->asDatetime($m['created_at']);
-                return '<span title="'.$formatedTime.'">'.$relativeTime.'</span>';
-            }
-        ],
-        [
-            'attribute' =>  'updated_at',
-            'format'    =>  'raw',
-            'value'     =>  function($m) {
-                $relativeTime = \Yii::$app->formatter->asRelativeTime($m['updated_at']);
-                $formatedTime = \Yii::$app->formatter->asDatetime($m['updated_at']);
                 return '<span title="'.$formatedTime.'">'.$relativeTime.'</span>';
             }
         ],
