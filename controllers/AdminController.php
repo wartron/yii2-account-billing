@@ -117,7 +117,7 @@ class AdminController extends Controller
     {
         Url::remember('', 'actions-redirect');
         $billable = $this->findModel($id);
-        $billable->scenario = 'update';
+        // $billable->scenario = 'update';
 
         $this->performAjaxValidation($billable);
 

@@ -56,9 +56,9 @@ $this->params['breadcrumbs'][] = $this->title;
             'description',
             'data',
             'created_at',
-            'created_by',
+            'created_by:hex',
             'updated_at',
-            'updated_by',
+            'updated_by:hex',
         ],
     ]);
 
