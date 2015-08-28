@@ -7,7 +7,7 @@ class m150816_212645_create_billable_item_table extends Migration
 {
     public function up()
     {
-        $this->createTable('{{%billable_item}}', [
+        $this->createTable('{{%billing_item}}', [
             'id'                =>  'BINARY(16) NOT NULL PRIMARY KEY',
 
             'status'            =>  Schema::TYPE_INTEGER . ' NOT NULL DEFAULT 0',
@@ -25,7 +25,7 @@ class m150816_212645_create_billable_item_table extends Migration
         ]);
 
         $columns = ['id', 'type', 'status', 'amount', 'name', 'description'];
-        $this->batchInsert('{{%billable_item}}', $columns, [
+        $this->batchInsert('{{%billing_item}}', $columns, [
             [
                 hex2bin('53f24b97aade11e2aced000c29ae5e1b'),
                 1,
@@ -50,7 +50,7 @@ class m150816_212645_create_billable_item_table extends Migration
 
     public function down()
     {
-        $this->dropTable('{{%billable_item}}');
+        $this->dropTable('{{%billing_item}}');
     }
 
 }

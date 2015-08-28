@@ -58,9 +58,6 @@ $this->params['breadcrumbs'][] = $this->title;
         ],
     ]);
 
-
-
-
     echo GridView::widget([
         'dataProvider'  => $itemsDp,
         'columns' => [
