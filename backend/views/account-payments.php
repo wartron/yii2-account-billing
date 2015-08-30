@@ -24,7 +24,24 @@ echo GridView::widget([
             },
             'format' => 'raw',
         ],
-        'status',
+        [
+            'attribute' => 'status',
+            'value' => function ($m) {
+                switch ($m->status) {
+                    case 1:
+                        return '<span class="label label-default">Paid</span>';
+                        break;
+                    case 2:
+                        return '<span class="label label-warning">Unpaid</span>';
+
+                        break;
+                    default:
+                        return '';
+                        break;
+                }
+            },
+            'format' => 'raw',
+        ],
         'amount:cent',
         'description',
         [
