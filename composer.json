@@ -16,7 +16,8 @@
         "wartron/yii2-helpers-formatter": "*",
         "wartron/yii2-uuid": "*",
         "wartron/yii2-widgets-urlactive": "*",
-        "kartik-v/yii2-helpers": "*"
+        "kartik-v/yii2-helpers": "*",
+        "ruskid/yii2-stripe": "dev-master"
     },
     "autoload": {
         "psr-4": {

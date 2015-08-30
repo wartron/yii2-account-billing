@@ -59,7 +59,7 @@ use wartron\yii2uuid\helpers\Uuid;
                     'label'     =>  'Payment Method',
                     'value'     =>  function ($m) {
                         if($m->billingaccount){
-                            return '<i class="glyphicon glyphicon-credit-card"></i> ****-****-****-'.$m->billingaccount->cc_last4;
+                            return '<i class="glyphicon glyphicon-credit-card"></i> ••••-••••-••••-'.$m->billingaccount->cc_last4;
                         }
                         return "";
                     },
