@@ -10,7 +10,8 @@ use yii\grid\GridView;
 use wartron\yii2uuid\helpers\Uuid;
 
 
-$this->title = Yii::t('account', 'Billing');
+$this->title = Yii::t('account', 'Payment Details');
+$this->params['breadcrumbs'][] = ['label' => Yii::t('account-billing', 'Billing'), 'url' => ['/billing/settings/index']];
 $this->params['breadcrumbs'][] = $this->title;
 
 $module = Yii::$app->getModule('account');
