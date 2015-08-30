@@ -8,7 +8,7 @@ class BillingAccount extends \wartron\yii2uuid\db\ActiveRecord
 {
     const STATUS_PENDING    = 0;
     const STATUS_ACTIVE     = 1;
-    const STATUS_FAILED     = 2;
+    const STATUS_INACTIVE   = 2;
 
     const CC_TYPE_UNKNOWN  = 0;
     const CC_TYPE_VISA     = 1;

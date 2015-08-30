@@ -11,7 +11,7 @@ class Payment extends \wartron\yii2uuid\db\ActiveRecord
 {
     const STATUS_PENDING            = 0;
     const STATUS_SUCCESSFUL         = 1;
-    const STATUS_FAILED             = 1;
+    const STATUS_FAILED             = 2;
 
     /**
      * @inheritdoc
