@@ -61,13 +61,7 @@ echo GridView::widget([
                 2   =>  'Subscription',
             ],
         ],
-        [
-            'attribute' => 'amount',
-            'value' => function ($m) {
-                return Yii::$app->formatter->asCurrency($m->amount/100);
-            },
-            'format' => 'raw',
-        ],
+        'amount:cent',
         [
             'attribute' => 'created_at',
             'value' => function ($model) {

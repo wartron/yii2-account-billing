@@ -25,7 +25,7 @@ echo GridView::widget([
             'format' => 'raw',
         ],
         'status',
-        'amount',
+        'amount:cent',
         'description',
         [
             'attribute' =>  'created_at',

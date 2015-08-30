@@ -53,10 +53,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'name',
             'status',
             'type',
-            [
-                'attribute' => 'amount',
-                'value' => Yii::$app->formatter->asCurrency($model->amount/100)
-            ],
+            'amount:cent',
             'description',
             'data',
             'created_at',
