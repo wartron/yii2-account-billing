@@ -26,8 +26,19 @@ echo $this->render('@wartron/yii2account/views/_alert', ['module' => $module]);
                 Billing Information
             </div>
             <div class="panel-body">
+            <?php
+                if($billingAccount)
+                {
+                    echo "<pre>";
+                    print_r($billingAccount->toArray());
+                    echo "</pre>";
+                }else{
 
+                    echo "No Billing Account";
 
+                }
+
+            ?>
             </div>
         </div>
         <div class="panel panel-default">

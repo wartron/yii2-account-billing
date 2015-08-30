@@ -8,10 +8,14 @@ class BillingAccount extends \wartron\yii2uuid\db\ActiveRecord
 {
     const STATUS_PENDING    = 0;
     const STATUS_ACTIVE     = 1;
+    const STATUS_FAILED     = 2;
 
-
+    const CC_TYPE_UNKNOWN  = 0;
     const CC_TYPE_VISA     = 1;
     const CC_TYPE_AMEX     = 2;
+
+
+    public $uuidRelations = ['account_id'];
 
     /**
      * @inheritdoc
@@ -44,7 +48,7 @@ class BillingAccount extends \wartron\yii2uuid\db\ActiveRecord
     public function rules()
     {
         return [
-            [['account_id', 'required'],
+            [['account_id'], 'required'],
             [['status', 'status', 'created_at'], 'integer'],
             [['full_name'], 'string', 'max' => 255],
             [['cc_last4', 'cc_type', 'cc_year', 'cc_month'], 'integer'],

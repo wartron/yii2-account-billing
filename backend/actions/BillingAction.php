@@ -14,9 +14,11 @@ class BillingAction extends AdminAction
     public function run($id)
     {
         $account = $this->findAccount($id);
+        $billingAccount = BillingAccount::findOne(['account_id' =>  $account->id]);
 
         return $this->controller->render('@wartron/yii2account/billing/backend/views/account-billing', [
-            'account'   =>  $account,
+            'account'           =>  $account,
+            'billingAccount'    =>  $billingAccount
         ]);
     }
 

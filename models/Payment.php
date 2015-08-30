@@ -55,7 +55,7 @@ class Payment extends \wartron\yii2uuid\db\ActiveRecord
      */
     public function getItems()
     {
-        return $this->hasMany(BillableItem::className(), ['id' => 'billable_item_id'])->viaTable('billing_payment_item', ['payment_id' => 'id']);
+        return $this->hasMany(BillableItem::className(), ['id' => 'billing_item_id'])->viaTable('billing_payment_item', ['payment_id' => 'id']);
     }
 
 

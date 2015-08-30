@@ -26,13 +26,13 @@ class m150816_223011_create_payment_table extends Migration
 
         $this->createTable('{{%billing_payment_item}}', [
             'payment_id'        =>  'BINARY(16) NOT NULL',
-            'billable_item_id'  =>  'BINARY(16) NOT NULL',
+            'billing_item_id'   =>  'BINARY(16) NOT NULL',
         ]);
 
-        $this->createIndex('payment_item_index', '{{%billing_payment_item}}', ['payment_id', 'billable_item_id'], true);
+        $this->createIndex('payment_item_index', '{{%billing_payment_item}}', ['payment_id', 'billing_item_id'], true);
 
         $this->addForeignKey('fk_payment_item_payment', '{{%billing_payment_item}}', 'payment_id', '{{%billing_payment}}', 'id', 'CASCADE', 'RESTRICT');
-        $this->addForeignKey('fk_payment_item_billable_item', '{{%billing_payment_item}}', 'billable_item_id', '{{%billable_item}}', 'id', 'CASCADE', 'RESTRICT');
+        $this->addForeignKey('fk_payment_item_billing_item', '{{%billing_payment_item}}', 'billing_item_id', '{{%billing_item}}', 'id', 'CASCADE', 'RESTRICT');
 
     }
 

@@ -3,7 +3,7 @@
 use yii\db\Schema;
 use yii\db\Migration;
 
-class m150816_21356_create_billing_account_table extends Migration
+class m150816_213645_create_billing_account_table extends Migration
 {
     public function up()
     {
