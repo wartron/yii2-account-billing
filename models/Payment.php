@@ -5,6 +5,7 @@ namespace wartron\yii2account\billing\models;
 use Exception;
 use Yii;
 use wartron\yii2account\billing\models\BillableItem;
+use wartron\yii2account\billing\models\BillingAccount;
 
 class Payment extends \wartron\yii2uuid\db\ActiveRecord
 {
@@ -17,7 +18,7 @@ class Payment extends \wartron\yii2uuid\db\ActiveRecord
      */
     public static function tableName()
     {
-        return 'payment';
+        return 'billing_payment';
     }
 
     /**
@@ -54,7 +55,16 @@ class Payment extends \wartron\yii2uuid\db\ActiveRecord
      */
     public function getItems()
     {
-        return $this->hasMany(BillableItem::className(), ['id' => 'billable_item_id'])->viaTable('payment_item', ['payment_id' => 'id']);
+        return $this->hasMany(BillableItem::className(), ['id' => 'billable_item_id'])->viaTable('billing_payment_item', ['payment_id' => 'id']);
+    }
+
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getBillingaccount()
+    {
+        return $this->hasOne(BillingAccount::className(), ['id' => 'billing_account_id']);
     }
 
     /**

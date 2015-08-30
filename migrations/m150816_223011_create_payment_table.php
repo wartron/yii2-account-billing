@@ -11,6 +11,8 @@ class m150816_223011_create_payment_table extends Migration
             'id'                =>  'BINARY(16) NOT NULL PRIMARY KEY',
 
             'account_id'        =>  'BINARY(16) NOT NULL',
+            'billing_account_id'=>  'BINARY(16)',
+
             'status'            =>  Schema::TYPE_INTEGER . ' NOT NULL',
             'amount'            =>  Schema::TYPE_INTEGER . ' NOT NULL',
             'description'       =>  Schema::TYPE_STRING . ' NOT NULL',
@@ -20,6 +22,7 @@ class m150816_223011_create_payment_table extends Migration
         ]);
 
         $this->addForeignKey('fk_payment_account', '{{%billing_payment}}', 'account_id', '{{%account}}', 'id', 'CASCADE', 'RESTRICT');
+        $this->addForeignKey('fk_payment_billing_account', '{{%billing_payment}}', 'billing_account_id', '{{%billing_account}}', 'id', 'CASCADE', 'RESTRICT');
 
         $this->createTable('{{%billing_payment_item}}', [
             'payment_id'        =>  'BINARY(16) NOT NULL',

@@ -23,7 +23,7 @@ class BillableItem extends \wartron\yii2uuid\db\ActiveRecord
     /** @inheritdoc */
     public static function tableName()
     {
-        return 'billable_item';
+        return 'billing_item';
     }
 
     /** @inheritdoc */
