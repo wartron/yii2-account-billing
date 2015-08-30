@@ -57,5 +57,15 @@ class Payment extends \wartron\yii2uuid\db\ActiveRecord
         return $this->hasMany(BillableItem::className(), ['id' => 'billable_item_id'])->viaTable('payment_item', ['payment_id' => 'id']);
     }
 
+    /**
+     * @inheritdoc
+     */
+    public function attributeLabels()
+    {
+        return [
+            'id' => Yii::t('app', 'ID'),
+            'created_at' => Yii::t('app', 'Date'),
+        ];
+    }
 
 }

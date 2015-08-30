@@ -17,7 +17,7 @@ class BillingAction extends \yii\base\Action
         $account = $this->findAccount();
         $paymentSearch  = Yii::createObject(PaymentSearch::className());
         $paymentDp = $paymentSearch->search(Yii::$app->request->get());
-
+        $paymentDp->sort = false;
 
         return $this->controller->render('@wartron/yii2account/billing/frontend/views/account-billing', [
             'account'           =>  $account,

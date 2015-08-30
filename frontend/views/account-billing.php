@@ -34,20 +34,40 @@ echo $this->render('@wartron/yii2account/views/_alert', ['module' => $module]);
             <div class="panel-heading">
                 Payment History
             </div>
-            <div class="panel-body">
-                <?php
+            <?php
 
                 echo GridView::widget([
-                    'dataProvider' => $paymentDp,
+                    'tableOptions' => [
+                        'class' => 'table table-stripped',
+                    ],
+                    'dataProvider'  =>  $paymentDp,
+                    'layout'        =>  '{items}',
                     'columns' => [
                         [
-                            'attribute' => 'id',
+                            'attribute' => 'status',
+                            'label'     =>  '',
                             'value' => function ($m) {
-                                return Html::a(Uuid::uuid2str($m->id), ['/billing/payment/view', 'id' =>  Uuid::uuid2str($m->id)]);
+                                switch ($m->status) {
+                                    case 1:
+                                        return '&nbsp;&nbsp;<i class="glyphicon glyphicon-check"></i> ';
+                                        break;
+                                    case 2:
+                                        return '&nbsp;&nbsp;<i class="glyphicon glyphicon-remove"></i> ';
+                                        break;
+                                    default:
+                                        break;
+                                }
                             },
                             'format' => 'raw',
                         ],
-                        'status',
+                        [
+                            'attribute' => 'id',
+                            'value' => function ($m) {
+                                return Html::a(substr(Uuid::uuid2str($m->id),0,8)."...", ['/billing/payment/view', 'id' =>  Uuid::uuid2str($m->id)]);
+                            },
+                            'format' => 'raw',
+                        ],
+                        'created_at:date',
                         [
                             'attribute' => 'amount',
                             'value' => function ($m) {
@@ -56,21 +76,33 @@ echo $this->render('@wartron/yii2account/views/_alert', ['module' => $module]);
                             'format' => 'raw',
                         ],
                         'description',
+
                         [
-                            'attribute' =>  'created_at',
-                            'format'    =>  'raw',
-                            'value'     =>  function($m) {
-                                $relativeTime = \Yii::$app->formatter->asRelativeTime($m['created_at']);
-                                $formatedTime = \Yii::$app->formatter->asDatetime($m['created_at']);
-                                return '<span title="'.$formatedTime.'">'.$relativeTime.'</span>';
-                            }
+                            'label'     =>  'Payment Method',
+                            'value'     =>  function ($m) {
+                                return '<i class="glyphicon glyphicon-credit-card"></i> ****-****-****-1234';
+                            },
+                            'format' => 'raw',
                         ],
+                        [
+                            'label'     =>  'Receipt',
+                            'value'     =>  function ($m) {
+                                return '<div class="text-center">'.
+                                    Html::a('<i class="glyphicon glyphicon-download"></i>',['/billing/payment/download', 'id' =>  Uuid::uuid2str($m->id)]).
+                                '</div>';
+                            },
+                            'headerOptions' =>  [
+                                'style' =>  'text-align:center;',
+                            ],
+                            'format' => 'raw',
+                        ],
+
+
+
                     ],
                 ]);
 
-                ?>
-
-            </div>
+            ?>
         </div>
     </div>
 </div>
