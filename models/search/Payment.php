@@ -37,7 +37,7 @@ class Payment extends BasePayment
     *
     * @return ActiveDataProvider
     */
-    public function search($params)
+    public function search($params,$accountId=null)
     {
         $query = BasePayment::find();
 
@@ -54,6 +54,7 @@ class Payment extends BasePayment
 
         $query->andFilterWhere([
             'id' => $this->id,
+            'account_id' => $accountId,
             'status' => $this->status,
             'amount' => $this->amount,
             'created_at' => $this->created_at,

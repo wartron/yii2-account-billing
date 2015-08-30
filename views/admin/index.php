@@ -16,6 +16,6 @@ use wartron\yii2uuid\helpers\Uuid;
  * @var AccountSearch $searchModel
  */
 
-$this->title = Yii::t('account-billing', 'Billing');
+$this->title = Yii::t('account-billing', 'Billing Admin');
 $this->params['breadcrumbs'][] = $this->title;
 

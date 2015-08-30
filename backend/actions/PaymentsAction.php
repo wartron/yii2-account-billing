@@ -9,7 +9,7 @@ use wartron\yii2account\billing\models\Payment;
 use wartron\yii2account\billing\models\search\Payment as PaymentSearch;
 use Yii;
 
-class PaymentsAction extends \yii\base\Action
+class PaymentsAction extends AdminAction
 {
 
     public function run($id)
@@ -23,16 +23,6 @@ class PaymentsAction extends \yii\base\Action
             'paymentSearch'     =>  $paymentSearch,
             'paymentDp'         =>  $paymentDp,
         ]);
-    }
-
-    protected function findAccount($id)
-    {
-        $id = Uuid::str2uuid($id);
-        $account = Account::findOne($id);
-        if ($account === null) {
-            throw new NotFoundHttpException('The requested page does not exist');
-        }
-        return $account;
     }
 
 }

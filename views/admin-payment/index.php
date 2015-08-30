@@ -17,7 +17,7 @@ use wartron\yii2uuid\helpers\Uuid;
  */
 
 $this->title = Yii::t('account-billing', 'Manage Payments');
-$this->params['breadcrumbs'][] = ['label' => Yii::t('account-billing', 'Billing'), 'url' => ['/billing/admin']];
+$this->params['breadcrumbs'][] = ['label' => Yii::t('account-billing', 'Billing Admin'), 'url' => ['/billing/admin']];
 $this->params['breadcrumbs'][] = $this->title;
 
 
@@ -43,7 +43,13 @@ echo GridView::widget([
                 2   =>  'Inactive',
             ],
         ],
-        'amount',
+        [
+            'attribute' => 'amount',
+            'value' => function ($m) {
+                return Yii::$app->formatter->asCurrency($m->amount/100);
+            },
+            'format' => 'raw',
+        ],
         [
             'attribute' => 'created_at',
             'value' => function ($model) {

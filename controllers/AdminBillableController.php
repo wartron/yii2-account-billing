@@ -77,12 +77,11 @@ class AdminBillableController extends Controller
         /** @var BillableItem $billable */
         $billable = Yii::createObject([
             'class'    => BillableItem::className(),
-            'scenario' => 'create',
         ]);
 
         $this->performAjaxValidation($billable);
 
-        if ($billable->load(Yii::$app->request->post()) && $billable->create()) {
+        if ($billable->load(Yii::$app->request->post()) && $billable->save()) {
             Yii::$app->getSession()->setFlash('success', Yii::t('account-billing', 'BillableItem has been created'));
 
             return $this->redirect(['update', 'id' => Uuid::uuid2str($billable->id)]);
@@ -104,7 +103,6 @@ class AdminBillableController extends Controller
     {
         Url::remember('', 'actions-redirect');
         $billable = $this->findModel($id);
-        // $billable->scenario = 'update';
 
         $this->performAjaxValidation($billable);
 

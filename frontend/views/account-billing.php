@@ -48,7 +48,13 @@ echo $this->render('@wartron/yii2account/views/_alert', ['module' => $module]);
                             'format' => 'raw',
                         ],
                         'status',
-                        'amount',
+                        [
+                            'attribute' => 'amount',
+                            'value' => function ($m) {
+                                return Yii::$app->formatter->asCurrency($m->amount/100);
+                            },
+                            'format' => 'raw',
+                        ],
                         'description',
                         [
                             'attribute' =>  'created_at',

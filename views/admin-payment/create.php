@@ -19,7 +19,7 @@ use yii\helpers\Html;
  */
 
 $this->title = Yii::t('account-billing', 'Create a payment');
-$this->params['breadcrumbs'][] = ['label' => Yii::t('account-billing', 'Billing'), 'url' => ['/billing/admin']];
+$this->params['breadcrumbs'][] = ['label' => Yii::t('account-billing', 'Billing Admin'), 'url' => ['/billing/admin']];
 $this->params['breadcrumbs'][] = ['label' => Yii::t('account-billing', 'Payments'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 

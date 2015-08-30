@@ -39,7 +39,10 @@ echo $this->render('@wartron/yii2account/views/_alert', ['module' => $module]);
         'attributes' => [
             'id:hex',
             'status',
-            'amount',
+            [
+                'attribute' => 'amount',
+                'value' => Yii::$app->formatter->asCurrency($model->amount/100)
+            ],
             'description',
             'created_at',
         ],
