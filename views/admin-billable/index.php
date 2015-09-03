@@ -3,7 +3,6 @@
 
 use wartron\yii2account\billing\models\search\BillableItem;
 
-use Yii;
 use yii\data\ActiveDataProvider;
 use yii\grid\ActionColumn;
 use yii\grid\GridView;
